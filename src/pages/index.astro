@@ -1,5 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components';
 
+const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json").then((res) => res.json());
 ---
 
 <html lang="en">
@@ -11,6 +13,15 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Astro
+			<Icon name="sheet" />
+		</h1>
+		{employeeData.map((employee) => (
+			<div>
+			<h2>{employee.name}</h2>
+			<p>{employee.title}</p>
+			</div>
+
+		))}
 	</body>
 </html>
