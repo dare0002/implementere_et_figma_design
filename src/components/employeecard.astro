@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+const { employee } = Astro.props;
+const { img, name, title, description } = employee;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{jpeg,jpg,png,gif}"
+);
+if (!images[img])
+  throw new Error(
+    `"${img}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif}"`
+  );
+---
+
+<article>
+  <h2>{name}</h2>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <Image src={images[img]()} alt={name} />
+</article>
+
+<style>
+  @layer components {
+    article {
+      color: var(--text-card);
+      background: var(--bg-card);
+    }
+  }
+</style>

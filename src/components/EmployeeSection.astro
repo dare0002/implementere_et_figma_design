@@ -1,0 +1,39 @@
+---
+import EmployeeCard from "./EmployeeCard.astro";
+
+const { data, theme = "light" } = Astro.props;
+---
+
+<section data-theme={theme}>
+  {data.map((employee) => <EmployeeCard {employee} />)}
+</section>
+
+<style>
+  @layer components {
+    [data-theme="dark"] {
+      --bg-section: red;
+      --text-section: #fff;
+      --bg-card: blue;
+      --text-card: #fff;
+    }
+
+    section {
+      --bg-section: #fff;
+      --text-section: red;
+      --bg-card: #fff;
+      --text-card: blue;
+      padding: 2rem;
+      color: var(--text-section);
+      background: var(--bg-section);
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+<!-- MAP = For hver gang den møder et nyt objekt (en ny employee) returnerer den en ny værdi -->

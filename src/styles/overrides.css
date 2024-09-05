@@ -1,0 +1,12 @@
+.flow {
+    >*+* {
+        margin-top: var(--flow-space, 1em);
+    }
+
+    h2 {
+        --flow-space: 2rem;
+    }
+}
+
+
+/* Tilføj class med navnet flow  */

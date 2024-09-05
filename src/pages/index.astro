@@ -1,27 +1,24 @@
 ---
-import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import EmployeeSection from '../components/EmployeeSection.astro';
+
+import Footer from '../components/footer.astro';
 
 const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json").then((res) => res.json());
+
+// import { Image } from "astro:assets";
+// import sarah from "../assets/images/sarah.jpg";
+// import "../styles/global.css";
+// import { Icon } from 'astro-icon/components';
+
+const firstThreeEmployees = employeeData.slice(0.3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro
-			<Icon name="sheet" />
-		</h1>
-		{employeeData.map((employee) => (
-			<div>
-			<h2>{employee.name}</h2>
-			<p>{employee.title}</p>
-			</div>
+<BaseLayout title="Home">
+	<EmployeeSection data={firstThreeEmployees} theme="dark"/>
+	<EmployeeSection data={employeeData} theme="dark"/>
+	<Footer/>
+</BaseLayout>
 
-		))}
-	</body>
-</html>
+
