@@ -1,0 +1,23 @@
+---
+import Baselayout from "../layouts/BaseLayout.astro";
+import EmployeeSection from "../components/EmployeeSection.astro";
+
+
+const url_employee = "https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json"
+const employeeData = await fetch(url_employee).then((res) => res.json());
+
+const firstThreeEmployees = employeeData.slice(0, 3);
+
+---
+
+<Baselayout title="About">
+	<EmployeeSection data={firstThreeEmployees} theme="dark"/>
+</BaseLayout>
+
+ 
+<!-- Fetch data in på employee
+ 
+const på firstthreeemployee
+
+send in i section-->
+

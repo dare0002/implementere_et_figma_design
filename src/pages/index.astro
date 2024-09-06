@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import EmployeeSection from '../components/EmployeeSection.astro';
 
-import Header from '../components/header.astro';
+import Header from '../components/Header.astro';
 
-import Footer from '../components/footer.astro';
+import Footer from '../components/Footer.astro';
 
 const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json").then((res) => res.json());
 
@@ -18,10 +18,7 @@ const firstThreeEmployees = employeeData.slice(0.3);
 ---
 
 <BaseLayout title="Home">
-	<Header/>
-	<EmployeeSection data={firstThreeEmployees} theme="dark"/>
-	<EmployeeSection data={employeeData} theme="dark"/>
-	<Footer/>
+	
 </BaseLayout>
 
 
