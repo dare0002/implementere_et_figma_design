@@ -5,7 +5,20 @@ const { data, theme = "light" } = Astro.props;
 ---
 
 <section>
+
+  <div class="hero-section">
+   <!-- HERO IMAGE HER -->
+  </div>
+
+
+  <h2>Meet Our Great Team</h2>
+  <div class="text-container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation.</p>
+    <button> Join our team</button>
+  </div>
+  <div class="grid-container">
   {data.map((employee) => <EmployeeCard {employee} />)}
+  </div>
 </section>
 
 <style>
@@ -17,28 +30,39 @@ const { data, theme = "light" } = Astro.props;
 
     section {
       --bg-section: #fff;
-      --text-section: red;
       --bg-card: #fff;
-      --text-card: blue;
       padding: 2rem;
       color: var(--text-section);
       background: var(--bg-section);
-
-
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      /* padding-left: 22.5rem;
-      padding-right: 22.5rem; */
     }
 
+    .text-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    button{
+      background: #181818;
+      color: #fff;
+      line-height: 1.8rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 2.6rem;
+      cursor: pointer;
+      align-items: flex-end;
+
+    }
 
   }
+
 </style>
 
-
-
-
-<!-- LAV grid her -->
 
 
 
