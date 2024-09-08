@@ -11,9 +11,7 @@ const { data, theme = "light" } = Astro.props;
 <style>
   @layer components {
     [data-theme="dark"] {
-      /* --bg-section: red; */
       --text-section: #fff;
-      /* --bg-card: blue; */
       --text-card: #fff;
     }
 
@@ -29,6 +27,8 @@ const { data, theme = "light" } = Astro.props;
 
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      /* padding-left: 22.5rem;
+      padding-right: 22.5rem; */
     }
 
 
