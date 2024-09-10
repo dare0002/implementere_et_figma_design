@@ -8,16 +8,28 @@ const employeeData = await fetch(url_employee).then((res) => res.json());
 
 const firstThreeEmployees = employeeData.slice(0, 3);
 
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+const aboutImage = images['/src/assets/images/about-hero.jpg'];
+
+if (!aboutImage) {
+  throw new Error(`Image "about-hero.jpg" does not exist in glob: "src/assets/images".`);
+}
+
 ---
 
 <Baselayout title="About">
+	<figure>
+        <Image src={aboutImage()} alt="About Image" class="about-image"/>
+    </figure>
+
 	<EmployeeSection data={firstThreeEmployees} theme="dark"/>
 </BaseLayout>
 
- 
-<!-- Fetch data in på employee
- 
-const på firstthreeemployee
+<style></style>
 
-send in i section-->
+@layer components {
 
+}

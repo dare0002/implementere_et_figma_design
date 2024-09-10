@@ -15,30 +15,36 @@ if (!images[img])
   );
 ---
 
-<article>
-  <div class="image-container">
-     <Image src={images[img]()} alt={name} class="employee-img"/>
-     <h3 class="title_overlay"> {title}</h3>
-  </div>
+  <article class="employee-card">
+    <div class="image-container">
+      <Image src={images[img]()} alt={name} class="employee-img"/>
+      <h3 class="title_overlay"> {title}</h3>
+    </div>
 
- <div class="text-container">
-  <h2>{name}</h2>
-  <p>{description}</p>
-  <div class="icons">
-  <Icon name="instagram"/>
-  <Icon name="facebook"/>
-  <Icon name="twitter"/>
-   </div>
-   </div>
-
-</article>
+  <div class="content">
+    <h2>{name}</h2>
+    <p>{description}</p>
+      <div class="icons">
+      <Icon name="instagram"/>
+      <Icon name="facebook"/>
+      <Icon name="twitter"/>
+      </div>
+    </div>
+  </article>
 
 <style>
+
   @layer components {
-    article {
+    article.employee-card {
       color: var(--body-text);
       background: var(--bg-card);
       margin: 1.5rem;
+      container-type: inline-size;
+    }
+
+    .image-container {
+      position: relative;
+      color: var(--title-card);
     }
 
     .employee-img{
@@ -46,11 +52,6 @@ if (!images[img])
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .image-container {
-      position: relative;
-      color: var(--title-card);
     }
 
     .title_overlay {
@@ -64,19 +65,19 @@ if (!images[img])
       padding-left: 1.31rem;
       padding-right: 1.31rem;
     }
-
-    .text-container {
-      margin-top: 1.56rem;
+    .content {
+      /* margin-top: 5rem; */
       text-align: center;
     }
 
-    .text-container p {
+    .content p {
       margin-top: 0.81rem;
     }
 
     /* ICONS ER IKKE VISABLE?????? */
-
     .icons {
+
+      /* Display-flex gør så icons forsvinder */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -86,13 +87,43 @@ if (!images[img])
       margin-top: 1.7rem;
     }
 
-    /* .image-container {
-      container: inline-size;
+    main {
+      container: main / inline-size; 
     }
 
-    @container image-container (width > 600px) {
-      grid-template-columns: 2fr 3fr;
-    } */
+    .employee-card {
+      container: main / inline-size; 
+    }
+    
+    .employee-card:has(img) {
+      display: grid;
+      gap: 1rem;
+
+      & h2 {
+        font-size: clamp(1.25rem, 5cqw, 2.5rem);
+      }
+
+      @container employee-card(min-width: 500px){
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @container main(max-width: 400px){
+        & img{
+          order: 1;
+        }
+
+        & p{
+          display: none;
+        }
+      }
+    }
+
+    main{
+      display: grid;
+      gap: 1rem; 
+    }
+
+
   }
 
 </style>

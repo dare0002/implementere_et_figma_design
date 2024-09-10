@@ -1,0 +1,154 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Header from '../components/Header.astro';
+
+import Footer from '../components/Footer.astro';
+
+import { Icon } from 'astro-icon/components';
+
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+const sarahImage = images['/src/assets/images/sarah.jpg'];
+
+if (!sarahImage) {
+  throw new Error(`Image "sarah.jpg" does not exist in glob: "src/assets/images".`);
+}
+---
+
+<BaseLayout title="CaseStudy">
+    <div>
+        <figure>
+            <Image src={sarahImage()} alt="Sarah Image" class="sarah-image"/>
+        </figure>
+        <div class="flow">
+        <div class="content">
+          <div class="h2-content">
+            <h2>Sarah Jasmine</h2>
+            <div class="icons">
+              <Icon name="instagram"/>
+              <Icon name="facebook"/>
+              <Icon name="twitter"/>
+            </div>
+
+          </div>
+            <p class="title">CEO at Company</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p>
+            <hr>
+            <h2>Past experience</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        </div>
+    </div>
+</BaseLayout>
+
+
+<style>
+
+@layer components {
+
+    /* div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    } */
+
+
+    hr {
+        color: #C1C1C1;
+        margin-top: 2rem;
+    }
+
+    .title {
+        color: #595566;
+        font-family: Cabin;
+        font-size: 1.25rem;
+        
+        font-weight: 400;
+        line-height: 1.4;
+    }
+    .h2-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .icons {
+      display: flex;
+      gap: 10px;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* .flow {
+        flow:vertical;
+    } */
+
+    .sarah-image {
+        width: 300px;
+        border-radius: 20px;
+        
+    }
+:root {
+  --square-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"><path d="M7.47662 4.02206C6.50635 3.05178 5.53232 2.07774 4.56205 1.10745C4.28482 0.83023 3.80905 0.83023 3.53183 1.10745C2.56155 2.07774 1.59128 3.04803 0.621002 4.02206C0.343781 4.29929 0.343781 4.77506 0.621002 5.05229C1.59128 6.02258 2.5653 6.99661 3.53558 7.9669C3.8128 8.24412 4.28857 8.24412 4.56579 7.9669C5.53607 6.99661 6.51009 6.02258 7.48037 5.05229C7.63022 4.90244 7.69016 4.73011 7.69016 4.56527C7.69016 4.55403 7.69016 4.54654 7.69016 4.5353C7.69016 4.52781 7.69016 4.51657 7.69016 4.50908C7.69016 4.34424 7.63022 4.17191 7.47662 4.02206ZM4.04881 6.41968C3.41944 5.79031 2.79382 5.16468 2.16445 4.5353C2.79382 3.90593 3.41944 3.2803 4.04881 2.65092C4.67818 3.2803 5.3038 3.90593 5.93317 4.5353C5.3038 5.16468 4.67818 5.79031 4.04881 6.41968Z"/></svg>');
+}
+
+figure {
+  position: relative;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  
+  &::before {
+    --square-count: 12;
+    --square-size: 1.34rem;
+    
+    --_square-size: var(--square-size, 1rem);
+    --_square-half: calc(var(--square-size) / 2);
+    --_square-sum: calc(var(--square-count) * var(--square-size));
+    z-index: -1;
+    content: '';
+    position: absolute;
+    inset: -50px 1030px auto auto;
+    /*inline-size: calc(var(--square-count) * 1.34rem - .67rem);*/
+    inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
+    mask:
+      var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
+      var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+    /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
+  }
+ 
+  &::after {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    bottom: 15rem;
+    background: green;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    z-index: -1;
+  }
+}
+
+@layer {
+  body {
+    min-height: 100svh;
+    font-family: system-ui, sans-serif;
+    display: grid;
+    place-content: center;
+  }
+}
+}
+
+</style>
+
+
+
