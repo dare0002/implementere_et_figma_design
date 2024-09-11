@@ -94,7 +94,6 @@ main {
     }
   }
 }
-
 ul {
   display: flex;
   gap: 1rem;
@@ -114,7 +113,20 @@ ul {
       font-weight: 700;
       font-size: 1.5625rem;
     }
+    &:hover .icons [data-icon] {
+      color: #FFCC4A;
+    }
   }
+}
+
+ ul li:hover {
+  color: #fff;
+  background: #181818;
+  transition: all 0.3s ease-in-out;
+}
+
+ul li:hover h3 {
+  color: #fff;
 }
 
 
