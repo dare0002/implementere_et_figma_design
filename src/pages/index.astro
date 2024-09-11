@@ -7,17 +7,29 @@ import Header from '../components/Header.astro';
 
 import Footer from '../components/Footer.astro';
 
+import Financial from '../components/Financial.astro';
+
+import Hero from '../components/Hero.astro';
+
 const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json").then((res) => res.json());
+
+import { Icon } from 'astro-icon/components';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+const aboutImage = images['/src/assets/images/about-hero.jpg'];
+
+if (!aboutImage) {
+  throw new Error(`Image "about-hero.jpg" does not exist in glob: "src/assets/images".`);
+}
 
 // import { Image } from "astro:assets";
 // import sarah from "../assets/images/sarah.jpg";
 // import "../styles/global.css";
-// import { Icon } from 'astro-icon/components';
-
-const firstThreeEmployees = employeeData.slice(0.3);
 ---
 
 <BaseLayout title="Home">
+    <Hero></Hero>
+     <Financial></Financial>
 	
 </BaseLayout>
 

@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+const sarahImage = images['/src/assets/images/sarah-hero.jpg'];
+
+if (!sarahImage) {
+  throw new Error(`Image "sarah.jpg" does not exist in glob: "src/assets/images".`);
+}
+---
+
+<div class="container">
+    <div class="header">
+        <h1>Adam Buschemia <br> Business Consultant</h1>
+        <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+        <button class="meeting-btn">Book a Meeting</button>
+    </div>
+    <div class="hero-image">
+       <Image src={sarahImage()} alt="Sarah Image" class="sarah-hero-image"/>
+    </div>
+</div>
+
+<div class="boxes">
+    <div class="box">
+        <h6>Finance & Restructuring</h6>
+        <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+        <button class="box-btn">Our Services</button>
+    </div>
+    <div class="box">
+        <h6>Our Approach</h6>
+        <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+        <button class="box-btn">More About</button>
+    </div>
+    <div class="box">
+        <h6>Consultalk Result</h6>
+        <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+        <button class="box-btn">Explore Our Solution</button>
+    </div>
+</div>
+
+
+<style>
+
+@layer components {
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        /* grid-column: full-start / full-end; */
+
+        .header {
+            background: #181818;
+            padding: 50px;
+
+            h1 {
+                color: #fff;
+            }
+
+            p {
+                color: #fff;
+            }
+
+            button {
+                background: #fff;
+                color: #181818;
+                border-radius: 2.625rem;
+                padding: 1rem 1.9375rem;
+                margin-top: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .boxes {
+        display: flex;
+        justify-content: space-around;
+        gap: 1.25rem;
+
+        .box {
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            background: rgba(38, 38, 38, 0.90);
+            backdrop-filter: blur(16px);
+            border-radius: 1.25rem;
+            padding: 2.88rem;
+
+            .box h6, p {
+                color: #fff;
+            }
+
+            .box-btn {
+                background: #151515;
+                color: #fff;
+                border-radius: 2.625rem;
+                padding: 1rem 1.9375rem;
+                margin-top: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+
+</style>

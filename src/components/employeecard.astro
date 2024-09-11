@@ -15,7 +15,9 @@ if (!images[img])
   );
 ---
 
-  <article class="employee-card">
+  <article>
+    <div class="card">
+
     <div class="image-container">
       <Image src={images[img]()} alt={name} class="employee-img"/>
       <h3 class="title_overlay"> {title}</h3>
@@ -30,16 +32,27 @@ if (!images[img])
       <Icon name="twitter"/>
       </div>
     </div>
+
+    </div>
   </article>
 
 <style>
 
   @layer components {
-    article.employee-card {
+    article {
       color: var(--body-text);
       background: var(--bg-card);
-      margin: 1.5rem;
-      container-type: inline-size;
+      container: employeecard / inline-size;
+
+      .card {
+        display: grid;
+        gap: .5rem;
+
+        @container employeecard (400px < width) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
     }
 
     .image-container {
@@ -49,8 +62,8 @@ if (!images[img])
 
     .employee-img{
       border-radius: 20px;
-      width: 100%;
-      height: auto;
+      /* width: 100%;
+      height: auto; */
       display: block;
     }
 
@@ -74,28 +87,37 @@ if (!images[img])
       margin-top: 0.81rem;
     }
 
-    /* ICONS ER IKKE VISABLE?????? */
     .icons {
-
-      /* Display-flex gør så icons forsvinder */
       display: flex;
+      gap: 20px;
+      align-self: center;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      width: 1.5rem;
-      height: 1.5rem;
-      gap: 1.8rem;
-      margin-top: 1.7rem;
+      margin-top: 1.6rem;
     }
 
-    main {
+    [data-icon] {
+      width: 24px;
+    }
+
+
+      .card {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+
+
+    /* main {
       container: main / inline-size; 
     }
 
-    .employee-card {
+    article {
       container: main / inline-size; 
     }
     
-    .employee-card:has(img) {
+    article:has(img) {
       display: grid;
       gap: 1rem;
 
@@ -115,15 +137,15 @@ if (!images[img])
         & p{
           display: none;
         }
-      }
+      } */
     }
 
-    main{
+    /* main{
       display: grid;
       gap: 1rem; 
-    }
+    } */
 
 
-  }
+  
 
 </style>

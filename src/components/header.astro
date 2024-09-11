@@ -2,6 +2,8 @@
 
 ---
 
+
+
 <header>
     <div class="navbar">
         <div class="logo">
@@ -27,8 +29,8 @@
     </div> 
 </header>
 
-
 <style>
+
 
     header {
         background-color: rgba(27, 27, 27, 0.91);
@@ -39,7 +41,6 @@
     li {
         list-style: none;
     }
-
     a {
         text-decoration:none;
         color: #fff;
@@ -48,29 +49,23 @@
         font-family: system-ui;
         line-height: 1.6;
     }
-
     .navbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        height: 7rem;
-        max-width: 75rem;
-        margin: 0 auto;
+        margin: 1rem;
     }
-
     .navbar .logo a {
         font-size: 1.875rem;
         font-weight: 600;
         line-height: 1.5;
         text-decoration: none;
     }
-
     .navbar .menu li{
         display: flex;
         gap: 1.88rem;
     }
-
     .button {
         background: #FFCC4A;
         color: #181818;
@@ -79,10 +74,27 @@
         border-radius: 1.25rem;
         cursor: pointer;
     }
-
-
-
-
-
-
 </style>
+
+
+<script>
+
+const burger = document.querySelector(".burger");
+const nav = document.querySelector("nav");
+const menu = document.querySelector(".menu");
+const links = document.querySelectorAll(".menu li a");
+
+burger.addEventListener("click", () => {
+burger.classList.toggle("active");
+nav.classList.toggle("active");
+});
+
+links.forEach((link) => {
+link.addEventListener("click", () => {
+burger.classList.remove("active");
+nav.classList.remove("active");
+});
+});
+
+
+</script>

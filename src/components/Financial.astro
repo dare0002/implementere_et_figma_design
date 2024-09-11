@@ -1,34 +1,37 @@
 ---
-
+import { Icon } from 'astro-icon/components';
 ---
 
-
-
-<main>
+<main class="full-bleed">
 
   <section class="full">
     <header>
+      <div class="icon-big"> <Icon name="projections"/></div>
       <h2>Financial Projections</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </header>
     
     <ul role="list">
       <li>
+        <div class="icons"> <Icon name="sheet"/></div>
         <h3>The Balance Sheet</h3>
         <p>The Balance Sheet is a summary of the assets and liabilities and equity of a business at a specific point of time.</p>
       </li>
       
       <li>
+        <div class="icons"> <Icon name="income"/></div>
         <h3>Income Statement</h3>
         <p>The Income (Profit and Loss) Statement, commonly referred to as the P&L statement, summarizes the revenue and expenses for a specific time period (one month, one quarter, one year, etc.)</p>
       </li>
       
       <li>
+        <div class="icons"> <Icon name="financial"/></div>
         <h3>Financial Plan</h3>
         <p>Keep your information current and review the documents on a regular basis (monthly or more often if needed). Review them with key individuals within your company.</p>
       </li>
       
       <li>
+        <div class="icons"> <Icon name="ratios"/></div>
         <h3>Financial Ratios</h3>
         <p>Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.</p>
       </li>
@@ -41,11 +44,19 @@
 
 <style>
 
+@layer components {
+
+
+.full-bleed {
+  grid-column: full-start / full-end;
+}
+
     :root {
   --content-width: 50rem;
 }
 
 main {
+  background: #F5F5F5;
   padding-block: 4rem;
   display: grid;
   grid-template-columns:
@@ -127,10 +138,28 @@ header {
   }
 }
 
+.icon-big {
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+}
 
+.icon-big [data-icon] {
+  width: 5rem;
+  height: 5rem;
+}
 
+}
+.icons {
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+}
 
-
+[data-icon] {
+  width: 2rem;
+  height: 2rem;
+}
 
 
 </style>

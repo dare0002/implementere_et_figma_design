@@ -19,33 +19,42 @@ if (!sarahImage) {
 }
 ---
 
-<BaseLayout title="CaseStudy">
-    <div>
-        <figure>
-            <Image src={sarahImage()} alt="Sarah Image" class="sarah-image"/>
-        </figure>
-        <div class="flow">
-        <div class="content">
-          <div class="h2-content">
-            <h2>Sarah Jasmine</h2>
-            <div class="icons">
-              <Icon name="instagram"/>
-              <Icon name="facebook"/>
-              <Icon name="twitter"/>
-            </div>
+<BaseLayout title="Single view">
+<article>
 
-          </div>
-            <p class="title">CEO at Company</p>
+  <div class="container">
+    <figure>
+      <Image src={sarahImage()} alt="Sarah Image" class="sarah-image"/>
+    </figure>
+
+    <div class="flow">
+
+      <div class="first-content">
+        <div class="name-title">
+          <h2>Sarah Jasmine</h2>
+          <p class="title">CEO at Company</p>
+        </div>
+        <div class="icons">
+         <Icon name="instagram"/>
+         <Icon name="facebook"/>
+         <Icon name="twitter"/>
+         <!-- <Icon name="linkedin"/> -->
+        
+
+      </div>
+      </div>
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p> 
             <hr>
-            <h2>Past experience</h2>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        </div>
-        </div>
+            <h2>Past experience</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. <br><br>
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
+  </div>
+
+  </article>
 </BaseLayout>
 
 
@@ -53,22 +62,55 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 @layer components {
 
-    /* div {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    } */
+  .article {
+    container-type: container / inline-size;
 
+    .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+
+    @container container (400px < width) {
+      grid-template-columns: 1fr;
+
+    }
+  }
+
+  .container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
 
     hr {
         color: #C1C1C1;
         margin-top: 2rem;
     }
 
+    .first-content {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* .name-title {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    } */
+
     .title {
         color: #595566;
         font-family: Cabin;
         font-size: 1.25rem;
-        
+        --flow-space: 0px;
         font-weight: 400;
         line-height: 1.4;
     }
@@ -81,17 +123,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
     .icons {
       display: flex;
-      gap: 10px;
-      width: 20px;
-      height: 20px;
+      gap: 1.5rem;
+      align-self: center;
+      flex-wrap: wrap;
     }
 
-    /* .flow {
-        flow:vertical;
-    } */
+    [data-icon] {
+      width: 24px;
+      height: 24px;
+    }
 
     .sarah-image {
-        width: 300px;
+        max-width: 480px;
         border-radius: 20px;
         
     }
@@ -114,22 +157,22 @@ figure {
     z-index: -1;
     content: '';
     position: absolute;
-    inset: -50px 1030px auto auto;
-    /*inline-size: calc(var(--square-count) * 1.34rem - .67rem);*/
+    /* inset: -50px 1030px auto auto; */
+    top: -48px;
+    left: -70px;
     inline-size: calc( round( var(--_square-sum), var(--_square-size) ) - var(--_square-half) );
     aspect-ratio: 1;
     background: linear-gradient(135deg, #BE965D, #976F40, #C99B61, #F0BE7B , #FFCB85, #EEBC79, #C0935B, #976F40) 0 0 / 100% 100%;
     mask:
       var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
       var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
-    /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
   }
  
   &::after {
     content: '';
     position: absolute;
     left: -1.5rem;
-    bottom: 15rem;
+    top: -1rem;
     background: green;
     width: 150px;
     height: 100px;
@@ -141,7 +184,6 @@ figure {
 @layer {
   body {
     min-height: 100svh;
-    font-family: system-ui, sans-serif;
     display: grid;
     place-content: center;
   }

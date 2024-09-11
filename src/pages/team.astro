@@ -22,26 +22,52 @@ const firstThreeEmployees = employeeData.slice(0, 3);
 
 
 <BaseLayout title="Team">
-	<div class="team-image-section">
+	 <div class="full-bleed">
 		<Image src={teamImage()} alt="Team Image" class="team-image"/>
 	</div>
-	<h2>Meet Our Great Team</h2>
+  <div class="flow">
+	 <h2>Meet Our Great Team</h2>
   <div class="text-container">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation.</p>
     <button> Join our team</button>
-  </div>
+    </div>
+  </div> 
 	<EmployeeSection data={employeeData}/>
 	<Newsletter/>
 </BaseLayout>
 
 
 <style>
+
+@layer components {
+
+  .full-bleed{
+    grid-column: full-start / full-end;
+  }
+
+  .team-image-section {
+    width: 100%;
+  }
+
+  .team-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  h2 {
+    margin-top: 5rem;
+  }
+
+  p{
+    margin-bottom: 2rem;
+  }
 	.text-container {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       gap: 1rem;
-    }
+  }
 
 	button{
       background: #181818;
@@ -52,4 +78,7 @@ const firstThreeEmployees = employeeData.slice(0, 3);
       cursor: pointer;
       align-items: flex-end;
     }
+
+  }
+
 </style>

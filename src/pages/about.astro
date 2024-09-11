@@ -10,6 +10,7 @@ const firstThreeEmployees = employeeData.slice(0, 3);
 
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import Financial from "../components/Financial.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
 const aboutImage = images['/src/assets/images/about-hero.jpg'];
@@ -21,15 +22,23 @@ if (!aboutImage) {
 ---
 
 <Baselayout title="About">
-	<figure>
+   <div class="full-bleed">
         <Image src={aboutImage()} alt="About Image" class="about-image"/>
-    </figure>
+   </div>
+  
+    
 
 	<EmployeeSection data={firstThreeEmployees} theme="dark"/>
 </BaseLayout>
 
-<style></style>
+<style>
 
 @layer components {
 
+  .full-bleed {
+    grid-column: full-start / full-end;
+  }
+
 }
+
+</style>
