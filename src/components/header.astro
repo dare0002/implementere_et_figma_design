@@ -44,7 +44,7 @@
     .logo {
       color: var(--white);
       font-weight: 600;
-      font-size: 1.875rem;
+      font-size: clamp(1rem, 5cqw, 1.875rem);
     }
     .logo a {
       text-decoration: none;
@@ -57,6 +57,7 @@
       padding: 0.5rem 1.5rem;
       order: 3;
     }
+
     button:hover {
       background-color: oklch(from var(--yellow) calc(l - 0.1) c h);
     }
@@ -118,7 +119,11 @@
     .burger {
       display: none;
     }
+
+
     /* Mobil */
+
+
     @media screen and (max-width: 450px) {
       .menu {
         display: none;
@@ -157,7 +162,11 @@
       }
     
     }
+
+
     /* Tablet */
+
+
     @media screen and (max-width: 800px) {
       .menu {
         display: none;
@@ -201,8 +210,13 @@
       }
     }
   }
+
+
 </style>
+
+
 <script>
+    
   document.addEventListener("DOMContentLoaded", function () {
     const burger = document.querySelector(".burger");
     const nav = document.querySelector("nav");
@@ -221,5 +235,6 @@
       });
     });
   });
+
 </script>
 
