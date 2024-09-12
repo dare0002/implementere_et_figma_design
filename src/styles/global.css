@@ -8,7 +8,12 @@
         --body-text: #595566; 
         --title-card: #FFF;
         --heading-font: "Cabin", sans-serif;
-        --body-font: "Lato", sans-serif;
+        --primaryfont: "Lato", sans-serif;
+
+
+        --black: rgba(27, 27, 27, 0.91);
+        --white: #fff;
+        --yellow: #FFCC4A;
 
         color: var(--body-text);
         line-height: 1.5;

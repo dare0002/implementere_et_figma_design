@@ -2,99 +2,223 @@
 
 ---
 
-
-
 <header>
-    <div class="navbar">
-        <div class="logo">
-        <a href="index.html"> <p class="logo-text">AskExperts</p></a>
+  <div>
+    <div id="logo">
+      <a class="logo" href="#"> AskExperts </a>
     </div>
-    <!-- <nav> -->
-    <ul class="menu">
-            <li>
-                <a href="index.html">Home</a>
-                <a href="casestudy.html">Case Study</a>
-                <a href="team.html">Team</a>
-                <a href="about.html">About</a>
-            </li>
-        
-    </ul>
-        <a href="#" class="button">Login</a>
-         <div class="burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <!-- </nav> -->
-    </div> 
+    <button popovertarget="popup">Login</button>
+    <nav>
+      <ul class="menu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/caseStudy.html">Case Study</a></li>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+  </div>
 </header>
 
+
+
+
 <style>
-
-
+  @layer components {
     header {
-        background-color: rgba(27, 27, 27, 0.91);
-        backdrop-filter: blur (10.5px);
-        position: relative;
-        padding: 0 2rem;
+      padding: 40px;
+      position: sticky;
+      background: oklch(from var(--black) calc(l + 0.1) c h);
+      color: var(--white);
+      top: 0;
+      z-index: 1000;
     }
-    li {
-        list-style: none;
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    a {
-        text-decoration:none;
-        color: #fff;
-        font-size: 1.1rem;
-        font-weight: 400;
-        font-family: system-ui;
-        line-height: 1.6;
+    .logo {
+      color: var(--white);
+      font-weight: 600;
     }
-    .navbar {
+    .logo a {
+      text-decoration: none;
+    }
+    button {
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 2rem;
+      padding: 0.5rem 1.5rem;
+      order: 3;
+    }
+    button:hover {
+      background-color: oklch(from var(--yellow) calc(l - 0.1) c h);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li a {
+      color: var(--white);
+      font-family: var(--primaryfont);
+      
+    }
+    .menu li {
+      margin-right: 20px;
+    }
+    .menu li:last-child {
+      margin-right: 0;
+    }
+    .menu a {
+      display: block;
+      padding: 10px;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+      text-align: end;
+      transition:
+        color 0.3s,
+        font-weight 0.3s;
+    }
+    .menu a.active {
+      border-bottom: 2px solid var(--white);
+      padding-bottom: 2px;
+      font-weight: 600;
+      color: var(--white);
+      width: fit-content;
+    }
+    .menu a:hover {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .burger {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .burger .line {
+      width: 100%;
+      height: 2px;
+      background-color: var(--white);
+      margin-bottom: 5px;
+      transition: 0.2s linear;
+    }
+    .burger {
+      display: none;
+    }
+    /* Mobil */
+    @media screen and (max-width: 450px) {
+      .menu {
+        display: none;
+        background: oklch(from var(--black) calc(l + 0.1) c h);
+      }
+      .burger {
+        display: block;
+      }
+  
+      .burger.active .line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        transition: 0.2s linear;
+      }
+      .burger.active .line:nth-child(2) {
+        opacity: 0;
+        transition: 0.15s linear;
+      }
+      .burger.active .line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+        transition: 0.2s linear;
+      }
+      nav.active .menu {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        position: absolute;
+        top: 100px;
+        left: 0;
         width: 100%;
-        margin: 1rem;
+        z-index: 1;
+        padding-bottom: 30px;
+      }
+      nav.active .menu li {
+        margin: 10px 20px;
+      }
+    
     }
-    .navbar .logo a {
-        font-size: 1.875rem;
-        font-weight: 600;
-        line-height: 1.5;
-        text-decoration: none;
-    }
-    .navbar .menu li{
+    /* Tablet */
+    @media screen and (max-width: 800px) {
+      .menu {
+        display: none;
+        background: oklch(from var(--black) calc(l + 0.1) c h);
+      }
+      .burger {
+        display: block;
+      }
+  
+      .burger.active .line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        transition: 0.2s linear;
+      }
+      .burger.active .line:nth-child(2) {
+        opacity: 0;
+        transition: 0.15s linear;
+      }
+      .burger.active .line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+        transition: 0.2s linear;
+      }
+      nav.active .menu {
         display: flex;
-        gap: 1.88rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100vw;
+        z-index: 1;
+        padding-bottom: 30px;
+        height: 100vh;
+        min-width: 100%;
+      }
+      nav.active .menu li {
+        margin: 10px 20px;
+      }
+      nav.active .menu a {
+        font-size: 18px;
+      }
     }
-    .button {
-        background: #FFCC4A;
-        color: #181818;
-        line-height: 1.8rem;
-        padding: 0.25rem 1rem;
-        border-radius: 1.25rem;
-        cursor: pointer;
-    }
+  }
 </style>
-
-
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector("nav");
+    const menu = document.querySelector(".menu");
+    const links = document.querySelectorAll(".menu li a");
 
-const burger = document.querySelector(".burger");
-const nav = document.querySelector("nav");
-const menu = document.querySelector(".menu");
-const links = document.querySelectorAll(".menu li a");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      nav.classList.toggle("active");
+    });
 
-burger.addEventListener("click", () => {
-burger.classList.toggle("active");
-nav.classList.toggle("active");
-});
-
-links.forEach((link) => {
-link.addEventListener("click", () => {
-burger.classList.remove("active");
-nav.classList.remove("active");
-});
-});
-
-
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        burger.classList.remove("active");
+        nav.classList.remove("active");
+      });
+    });
+  });
 </script>
+
