@@ -5,15 +5,17 @@
 
 @layer global {
     html {
-        --body-text: #595566; 
+        --primary-text: #595566; 
         --title-card: #FFF;
         --heading-font: "Cabin", sans-serif;
         --primaryfont: "Lato", sans-serif;
 
 
-        --black: rgba(27, 27, 27, 0.91);
+        --black: #181818;
         --white: #fff;
+        --lightgray: #F5F5F5;
         --yellow: #FFCC4A;
+        --green: #4EAF4E;
 
         color: var(--body-text);
         line-height: 1.5;
@@ -22,7 +24,7 @@
     }
 
     h1 {
-        color: #1C1C1C;
+        color: var(--black);
         font-family: var(--heading-font);
         font-size: 3.125rem;
         font-weight: 600;
@@ -30,7 +32,7 @@
     }
 
     h2 {
-        color: #1C1C1C;
+        color: var(--black);
         font-family: var(--heading-font);
         font-size: 2.8125rem;
         font-weight: 600;
@@ -38,7 +40,7 @@
     }
 
     h3 {
-        color: #1C1C1C;
+        color: var(--black);
         font-family: var(--heading-font);
         font-size: 2.5rem;
         font-weight: 600;
@@ -46,7 +48,7 @@
     }
 
     h4 {
-        color: #1C1C1C;
+        color: var(--black);
         font-family: var(--heading-font);
         font-size: 2.1875rem;
         font-weight: 600;
@@ -55,7 +57,7 @@
 
     h5 {
         font-size: 1.875rem;
-        color: #fff;
+        color: var(--white);
         font-family: var(--heading-font);
         font-size: 1.875rem;
         font-weight: 600;   
@@ -63,7 +65,7 @@
     }
 
     h6 {
-        color: #1C1C1C;
+        color: var(--black);
         font-family: var(--heading-font);
         font-size: 1.5625rem;
         font-weight: 600;
@@ -72,16 +74,9 @@
 
     p {
         max-width: 65ch;
-        font-family: var(--body-font);
+        font-family: var(--primaryfont);
         font-size: 1rem;
         font-weight: 400;
         line-height: 1.4; 
     }
 }
-
-
-
-
-
-
-/* Her laver vi vores egne abstraktioner af lag. Ændrer default style til at se pænere ud. Lav alle farver til variabler/definere dem*/

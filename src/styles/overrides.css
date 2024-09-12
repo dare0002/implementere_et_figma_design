@@ -14,5 +14,9 @@
     hr {
         --flow-space: 2rem;
     }
+
+    h6 {
+        --flow-space: 3rem;
+    }
 }
 

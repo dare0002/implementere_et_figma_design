@@ -11,7 +11,7 @@ if (!sarahImage) {
 
 <div class="container">
     <div class="header">
-        <h1>Adam Buschemia <br> Business Consultant</h1>
+        <h1>Adam Buschemia <br> Business Consultant</h1> <br>
         <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
         <button class="meeting-btn">Book a Meeting</button>
     </div>
@@ -22,17 +22,17 @@ if (!sarahImage) {
 
 <div class="boxes">
     <div class="box">
-        <h6>Finance & Restructuring</h6>
+        <h6 class="box-heading">Finance & Restructuring</h6>
         <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
         <button class="box-btn">Our Services</button>
     </div>
     <div class="box">
-        <h6>Our Approach</h6>
+        <h6 class="box-heading">Our Approach</h6>
         <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
         <button class="box-btn">More About</button>
     </div>
     <div class="box">
-        <h6>Consultalk Result</h6>
+        <h6 class="box-heading">Consultalk Result</h6>
         <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
         <button class="box-btn">Explore Our Solution</button>
     </div>
@@ -47,26 +47,44 @@ if (!sarahImage) {
         display: grid;
         grid-column: full;
         grid-template-columns: 1fr 1fr;
+        position: relative;
+        padding-bottom: 15rem;
+        /* min-height: 100vh;  */
 
         .header {
-            background: #181818;
+            background: var(--black);
             padding: 50px;
+            
 
             h1 {
-                color: #fff;
+                color: var(--white);
+                margin-left: 21%;
             }
 
             p {
-                color: #fff;
+                color: var(--white);
+                margin-left: 21%;
             }
 
             button {
-                background: #fff;
-                color: #181818;
+                background: var(--white);
+                color: var(--black);
                 border-radius: 2.625rem;
                 padding: 1rem 1.9375rem;
                 margin-top: 2rem;
                 cursor: pointer;
+                margin-left: 21%;
+            }
+
+            button:hover{
+                background-color: oklch(from var(--lightgray) calc(l - 0.1) c h);
+                }
+            }
+        
+            .sarah-hero-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
             }
         }
     }
@@ -75,6 +93,11 @@ if (!sarahImage) {
         display: flex;
         justify-content: space-around;
         gap: 1.25rem;
+        position: absolute; 
+        top: 30rem;
+        left: 50%;
+        transform: translateX(-50%); 
+        width: 75%; 
 
         .box {
             border: 1px solid rgba(255, 255, 255, 0.20);
@@ -84,16 +107,25 @@ if (!sarahImage) {
             padding: 2.88rem;
 
             .box h6, p {
-                color: #fff;
+                color: var(--white);
             }
 
             .box-btn {
-                background: #151515;
-                color: #fff;
+                background: var(--black);
+                color: var(--white);
                 border-radius: 2.625rem;
                 padding: 1rem 1.9375rem;
                 margin-top: 2rem;
                 cursor: pointer;
+            }
+
+            .box-heading {
+                color: var(--white);
+                
+            }
+
+            .box h6, p {
+                --flow-space: 0px;
             }
         }
     }
