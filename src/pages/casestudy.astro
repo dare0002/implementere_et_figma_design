@@ -20,6 +20,7 @@ if (!sarahImage) {
 ---
 
 <BaseLayout title="Single view">
+
 <article>
 
   <div class="container">
@@ -39,21 +40,17 @@ if (!sarahImage) {
          <Icon name="facebook"/>
          <Icon name="twitter"/>
          <!-- <Icon name="linkedin"/> -->
-        
-
       </div>
       </div>
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p> 
             <hr>
-
             <h2>Past experience</h2>
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do. <br><br>
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
   </div>
-
   </article>
 </BaseLayout>
 
@@ -62,29 +59,22 @@ if (!sarahImage) {
 
 @layer components {
 
-  .article {
-    container-type: container / inline-size;
-
-    .container {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 5rem;
-      margin-top: 5rem;
-      margin-bottom: 5rem;
-    }
-
-    @container container (400px < width) {
-      grid-template-columns: 1fr;
-
-    }
+  article {
+    container: my-container / inline-size;
+    
+    
   }
-
+  
   .container {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 5rem;
-      margin-top: 5rem;
-      margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    @container my-container (width < 700px) {
+      grid-template-columns: revert;
+    }
     }
 
     hr {

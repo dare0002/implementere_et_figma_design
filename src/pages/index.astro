@@ -15,6 +15,7 @@ const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/fro
 
 import { Icon } from 'astro-icon/components';
 import Experience from '../components/Experience.astro';
+import Expect from '../components/Expect.astro';
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
 const aboutImage = images['/src/assets/images/about-hero.jpg'];
@@ -30,6 +31,7 @@ if (!aboutImage) {
 
 <BaseLayout title="Home">
     <Hero></Hero>
+    <Expect></Expect>
      <Financial></Financial>
      <Experience></Experience>
 </BaseLayout>

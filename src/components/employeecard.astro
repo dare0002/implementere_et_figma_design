@@ -14,7 +14,7 @@ if (!images[img])
     `"${img}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif}"`
   );
 ---
-
+<li>
   <article>
     <div class="card">
 
@@ -35,20 +35,23 @@ if (!images[img])
 
     </div>
   </article>
-
+</li>
 <style>
 
   @layer components {
+    li {
+      
+    }
     article {
+      container: employeecard / inline-size;
       color: var(--body-text);
       background: var(--bg-card);
-      container: employeecard / inline-size;
 
       .card {
         display: grid;
         gap: .5rem;
 
-        @container employeecard (400px < width) {
+        @container employeecard (width > 400px) {
           grid-template-columns: 1fr 1fr;
         }
       }
