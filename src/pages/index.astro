@@ -11,6 +11,8 @@ import Financial from '../components/Financial.astro';
 
 import Hero from '../components/Hero.astro';
 
+import Newsletter from '../components/Newsletter.astro';
+
 const employeeData = await fetch("https://raw.githubusercontent.com/dare0002/frontend-design/main/resources/json/employees.json").then((res) => res.json());
 
 import { Icon } from 'astro-icon/components';
@@ -34,6 +36,7 @@ if (!aboutImage) {
     <Expect></Expect>
      <Financial></Financial>
      <Experience></Experience>
+      <!-- <Newsletter></Newsletter> -->
 </BaseLayout>
 
 
